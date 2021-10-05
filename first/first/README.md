@@ -8,3 +8,5 @@ In case of error: "Web server failed to start. Port 8080 was already in use.
 
 - http://localhost:8080/v3/api-docs
 - http://localhost:8080/swagger-ui/index.html
+- https://www.baeldung.com/global-error-handler-in-a-spring-rest-api
+- https://reflectoring.io/bean-validation-with-spring-boot/
