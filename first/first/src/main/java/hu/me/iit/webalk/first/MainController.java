@@ -3,6 +3,8 @@ package hu.me.iit.webalk.first;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +29,7 @@ public class MainController {
 	}
 
 	@PostMapping(path = "articles/")
-	void newArticle(@RequestBody ArticlesDto articlesDto) {
+	void newArticle(@RequestBody @Valid ArticlesDto articlesDto) {
 		articles.add(articlesDto);
 	}
 
@@ -44,7 +46,7 @@ public class MainController {
 	}
 
 	@PutMapping(path = "articles/{id}")
-	void replaceArticle(@PathVariable("id") String id, @RequestBody ArticlesDto articlesDto) {
+	void replaceArticle(@PathVariable("id") String id, @RequestBody @Valid ArticlesDto articlesDto) {
 
 		int found = findArticleById(id);
 

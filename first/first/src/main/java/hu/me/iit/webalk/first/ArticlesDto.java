@@ -1,10 +1,18 @@
 package hu.me.iit.webalk.first;
 
-public class ArticlesDto {
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
+public class ArticlesDto {
+	
+	
+	@NotNull
+	@NotBlank
 	private String author;
-	private Integer page;
+	@NotBlank
 	private String title;
+	@Min(10)
 	private Integer pages;
 
 	public String getAuthor() {
@@ -13,14 +21,6 @@ public class ArticlesDto {
 
 	public void setAuthor(String author) {
 		this.author = author;
-	}
-
-	public Integer getPage() {
-		return page;
-	}
-
-	public void setPage(Integer page) {
-		this.page = page;
 	}
 
 	public String getTitle() {
@@ -41,7 +41,7 @@ public class ArticlesDto {
 
 	@Override
 	public String toString() {
-		return "Articles [author=" + author + ", page=" + page + ", title=" + title + ", pages=" + pages + "]";
+		return "Articles [author=" + author + ", title=" + title + ", pages=" + pages + "]";
 	}
 
 }
