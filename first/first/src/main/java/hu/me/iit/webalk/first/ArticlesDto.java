@@ -5,8 +5,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class ArticlesDto {
-	
-	
+
+	@NotNull
+	private Long id;
+
 	@NotNull
 	@NotBlank
 	private String author;
@@ -41,7 +43,15 @@ public class ArticlesDto {
 
 	@Override
 	public String toString() {
-		return "Articles [author=" + author + ", title=" + title + ", pages=" + pages + "]";
+		return "ArticlesDto [id=" + id + ", author=" + author + ", title=" + title + ", pages=" + pages + "]";
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }
