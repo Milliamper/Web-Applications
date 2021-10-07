@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ArticleRepositoryMemory implements ArticleRepository{
 	
-	private final List<ArticlesDto> articles = new ArrayList<>();
+	private final List<ArticleDto> articles = new ArrayList<>();
 	
 	private int findArticleById(Long id) {
 		int found = -1;
@@ -19,22 +19,22 @@ public class ArticleRepositoryMemory implements ArticleRepository{
 		return found;
 	}
 
-	@Override
-	public List<ArticlesDto> findAll() {
+	public List<ArticleDto> findAll() {
 		return articles;
 	}
 
+	
 	@Override
-	public ArticlesDto getById() {
+	public ArticleDto getById(Long id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Long save(ArticlesDto articlesdto) {
 		int found = findArticleById(articlesdto.getId());
 
 		if (found != -1) {
-			ArticlesDto foundArticle = articles.get(found);
+			ArticleDto foundArticle = articles.get(found);
 			foundArticle.setAuthor(articlesdto.getAuthor());
 			foundArticle.setPages(articlesdto.getPages());
 		} else {
@@ -53,5 +53,13 @@ public class ArticleRepositoryMemory implements ArticleRepository{
 		}
 		
 	}
+
+	@Override
+	public Long save(ArticleDto articleDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

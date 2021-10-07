@@ -1,37 +1,39 @@
 package hu.me.iit.webalk.first;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-public class ArticleServiceImpl implements ArticleService{
+@Component
+public class ArticleServiceImpl implements ArticleService {
+    private final int MAXIMUM_ARTICLE_COUNT = 10;
+    private final ArticleRepository articleRepository;
 
-	//minden business logic itt van
-	private final int MAXIMUM_ARTICLE_COUNT = 10;
-	private ArticleRepository articleRepository;
-	
-	@Override
-	public List<ArticlesDto> findAll() {
-		// TODO Auto-generated method stub
-		return articleRepository.findAll();
-	}
+    public ArticleServiceImpl(ArticleRepository articleRepository) {
+        this.articleRepository = articleRepository;
+    }
 
-	@Override
-	public ArticlesDto getById() {
-		// TODO Auto-generated method stub
-		return articleRepository.getById();
-	}
+    @Override
+    public List<ArticleDto> findAll() {
+        return articleRepository.findAll();
+    }
 
-	@Override
-	public Long save(ArticlesDto articlesdto) {
-		if (articleRepository.findAll().size() >= MAXIMUM_ARTICLE_COUNT) {
-				throw new TooMuchArticleException();
-		}
-		return articleRepository.save(articlesdto);
-	}
+    @Override
+    public ArticleDto getById(Long id) {
+        return articleRepository.getById(id);
+    }
 
-	@Override
-	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public Long save(ArticleDto articleDto) {
+        if (articleRepository.findAll().size() >= MAXIMUM_ARTICLE_COUNT) {
+            throw new TooMuchArticleException();
+        }
+        return articleRepository.save(articleDto);
+    }
 
+    @Override
+    public void deleteById(Long id) {
+        articleRepository.deleteById(id);
+    }
 }

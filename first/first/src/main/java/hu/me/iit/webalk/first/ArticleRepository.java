@@ -3,13 +3,11 @@ package hu.me.iit.webalk.first;
 import java.util.List;
 
 public interface ArticleRepository {
+	List<ArticleDto> findAll();
 
-	List<ArticlesDto> findAll();
+	ArticleDto getById(Long id);
 
-	ArticlesDto getById();
-
-	Long save(ArticlesDto articlesdto);
+	Long save(ArticleDto articleDto);
 
 	void deleteById(Long id);
-
 }
