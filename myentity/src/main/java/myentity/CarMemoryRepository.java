@@ -13,7 +13,7 @@ public class CarMemoryRepository implements CarRepository {
 	private int findCarById(Long id) {
 		int found = -1;
 		for (int i = 0; i < cars.size(); i++) {
-			if (cars.get(i).getType().equals(id)) {
+			if (cars.get(i).getId().equals(id)) {
 				found = i;
 				break;
 			}
