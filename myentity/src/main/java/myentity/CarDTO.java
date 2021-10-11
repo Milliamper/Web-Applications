@@ -1,5 +1,7 @@
 package myentity;
 
+import java.util.Objects;
+
 //Folyamatok között közvetít adatokat. Lényege az, hogy a webszolgáltatások által végzett adatközvetítés drága. 
 //Mivel ez a költség nagyrészt a szerver-kliens kapcsolatból adódnak, 
 //érdemes a hívások számát csökkenteni adatátviteli objektumok beiktatásával. 
@@ -10,8 +12,8 @@ public class CarDTO {
 	private Long id;
 	private String brand;
 	private String type;
-	private int registered;
-	private double cylinderCapacity;
+	private Integer registered;
+	private Double cylinderCapacity;
 
 	public Long getId() {
 		return id;
@@ -51,6 +53,22 @@ public class CarDTO {
 
 	public void setCylinderCapacity(double cylinderCapacity) {
 		this.cylinderCapacity = cylinderCapacity;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		CarDTO that = (CarDTO) o;
+		return id.equals(that.id) && brand.equals(that.brand) && type.equals(that.type)
+				&& registered.equals(that.registered) && cylinderCapacity.equals(that.cylinderCapacity);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, brand, type, registered, cylinderCapacity);
 	}
 
 }

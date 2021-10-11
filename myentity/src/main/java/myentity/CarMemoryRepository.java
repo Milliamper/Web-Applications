@@ -10,7 +10,7 @@ public class CarMemoryRepository implements CarRepository {
 
 	private final List<CarDTO> cars = new ArrayList<>();
 
-	private int findCarById(Long id) {
+	public int findCarById(Long id) {
 		int found = -1;
 		for (int i = 0; i < cars.size(); i++) {
 			if (cars.get(i).getId().equals(id)) {
@@ -28,8 +28,9 @@ public class CarMemoryRepository implements CarRepository {
 
 	@Override
 	public CarDTO getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		int carByIdIndex = findCarById(id);
+
+		return carByIdIndex == -1 ? null : cars.get(carByIdIndex);
 	}
 
 	@Override
@@ -50,7 +51,11 @@ public class CarMemoryRepository implements CarRepository {
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		int found = findCarById(id);
+
+		if (found != -1) {
+			cars.remove(found);
+		}
 
 	}
 
