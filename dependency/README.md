@@ -114,10 +114,11 @@ the important method of dependency creates
 * html bold text
 * f.e "text" -> "**text**"
 
-* https://www.baeldung.com/mockito-verify
+
 
 Spring Annotations:
 * https://dzone.com/refcardz/spring-annotations
 
 Mockito:
 * https://dzone.com/refcardz/mockito
+* https://www.baeldung.com/mockito-verify
