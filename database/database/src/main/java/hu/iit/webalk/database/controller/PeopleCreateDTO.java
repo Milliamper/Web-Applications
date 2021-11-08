@@ -1,9 +1,11 @@
-package hu.iit.webalk.database;
+package hu.iit.webalk.database.controller;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-public class PeopleDTO {
+import hu.iit.webalk.database.repository.People;
+
+public class PeopleCreateDTO {
 
 	private Long id;
 	@NotEmpty
@@ -11,11 +13,16 @@ public class PeopleDTO {
 	@Size(min = 18)
 	private int age;
 	
-	public PeopleDTO() {
+	public PeopleCreateDTO() {
 		
 	}
 	
-	public PeopleDTO(People people) {
+	public PeopleCreateDTO(People people) {
+		this.age = people.getAge();
+		this.name = people.getName();
+	}
+	
+	public PeopleCreateDTO(People people) {
 		this.id = people.getId();
 		this.name = people.getName();
 		this.age = people.getAge();
@@ -43,6 +50,10 @@ public class PeopleDTO {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+	
+	public People toPeople() {
+		return new People(null, age, name);
 	}
 
 }

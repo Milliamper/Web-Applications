@@ -1,19 +1,28 @@
-package hu.iit.webalk.database;
+package hu.iit.webalk.database.service;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
 public class People {
 
-	@Id
-	@GeneratedValue // az így megjelölt elemeknek ő adja majd az értéket
 	private Long id;
 
 	private String name;
 
 	private int age;
+
+	public People() {
+
+	}
+
+	public People(hu.iit.webalk.database.repository.People people) {
+		this.age = people.getAge();
+		this.name = people.getName();
+		this.id = people.getId();
+	}
+
+	public People(Long id, int age, String name) {
+		this.id = id;
+		this.age = age;
+		this.name = name;
+	}
 
 	public Long getId() {
 		return id;

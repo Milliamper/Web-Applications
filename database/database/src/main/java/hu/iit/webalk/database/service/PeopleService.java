@@ -1,6 +1,4 @@
-package hu.iit.webalk.database;
-
-import java.util.List;
+package hu.iit.webalk.database.service;
 
 public interface PeopleService {
 	
