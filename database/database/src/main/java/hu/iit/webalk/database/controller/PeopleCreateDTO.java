@@ -18,11 +18,6 @@ public class PeopleCreateDTO {
 	}
 	
 	public PeopleCreateDTO(People people) {
-		this.age = people.getAge();
-		this.name = people.getName();
-	}
-	
-	public PeopleCreateDTO(People people) {
 		this.id = people.getId();
 		this.name = people.getName();
 		this.age = people.getAge();

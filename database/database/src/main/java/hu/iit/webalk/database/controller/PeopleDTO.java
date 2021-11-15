@@ -22,6 +22,10 @@ public class PeopleDTO {
 		this.name = people.getName();
 		this.age = people.getAge();
 	}
+	
+	public People toPeople() {
+		return new People(id, age, name);
+	}
 
 	public Long getId() {
 		return id;
