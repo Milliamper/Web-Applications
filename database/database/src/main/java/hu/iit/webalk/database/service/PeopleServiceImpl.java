@@ -23,11 +23,10 @@ public class PeopleServiceImpl implements PeopleService {
 	public People create(People toPeople) {
 		
 		hu.iit.webalk.database.repository.People peopleDb = new hu.iit.webalk.database.repository.People();
-		peopleDb.setAge(people.getAge());
-		peopleDb.setName(people.getName());
+		peopleDb.setAge(toPeople.getAge());
+		peopleDb.setName(toPeople.getName());
 		
-		
-		return peopleRepository.save(new hu.iit.webalk.database.repository.People);
+		return peopleRepository.save(new hu.iit.webalk.database.repository.People());
 	}
 
 
@@ -53,7 +52,7 @@ public class PeopleServiceImpl implements PeopleService {
 
 	@Override
 	public hu.iit.webalk.database.service.People create(hu.iit.webalk.database.service.People toPeople) {
-		return new People(peopleRepository.save(people.toEntity()));
+		return new People(peopleService.save(toPeople.toEntity()));
 	}
 
 	@Override
