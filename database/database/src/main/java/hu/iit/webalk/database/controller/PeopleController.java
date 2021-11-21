@@ -25,7 +25,6 @@ public class PeopleController {
 	private final PeopleService peopleService;
 
 	public PeopleController(PeopleService peopleService) {
-		super();
 		this.peopleService = peopleService;
 	}
 
@@ -52,7 +51,7 @@ public class PeopleController {
 
 	@GetMapping("/{id}")
 	public PeopleDTO getById(@PathVariable("id") Long id) {
-		return new PeopleDTO(peopleService.getById());
+		return new PeopleDTO(peopleService.getById(id));
 	}
 
 	@PutMapping
@@ -60,9 +59,14 @@ public class PeopleController {
 		peopleService.save(peopleDto.toPeople());
 	}
 
-	@GetMapping("/findByAgeGt")
-	void findAdultPeople(@RequestParam("age") int age) {
-		peopleService.save(findByAgeGreaterThan(age));
-	}
+    @GetMapping("/findByAgeGt")
+    Iterable<PeopleDTO> findAdultPeople( @RequestParam("age") int age ) {
+        List<hu.iit.webalk.database.controller.PeopleDTO> peopleDtoList = new ArrayList<>();
+        for (People people : peopleService.findByAgeGreatherThan(age)) {
+            peopleDtoList.add(new hu.iit.webalk.database.controller.PeopleDTO(people));
+        }
+
+        return peopleDtoList;
+    }
 
 }

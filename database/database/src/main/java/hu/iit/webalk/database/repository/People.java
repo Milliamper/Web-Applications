@@ -14,10 +14,6 @@ public class People {
 	private String name;
 
 	private int age;
-
-	public People(People people) {
-		// TODO Auto-generated constructor stub
-	}
 	
 	public People() {
 		

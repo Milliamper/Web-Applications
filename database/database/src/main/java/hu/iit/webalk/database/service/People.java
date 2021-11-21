@@ -3,20 +3,23 @@ package hu.iit.webalk.database.service;
 public class People {
 
 	private Long id;
-
 	private String name;
-
 	private int age;
 
-	public People() {
-
-	}
 
 	public People(hu.iit.webalk.database.repository.People people) {
 		this.age = people.getAge();
 		this.name = people.getName();
 		this.id = people.getId();
 	}
+	
+    public hu.iit.webalk.database.repository.People toEntity() {
+        return new hu.iit.webalk.database.repository.People(id, age, name);
+    }
+    
+    public People() {
+    	
+    }
 
 	public People(Long id, int age, String name) {
 		this.id = id;
