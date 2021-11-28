@@ -2,6 +2,7 @@ package hu.iit.webalk.database.controller;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+
 import hu.iit.webalk.database.service.People;
 
 public class PeopleDTO {
