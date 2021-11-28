@@ -36,7 +36,7 @@ public class AircraftServiceImpl implements AircraftService {
 	@Override
 	public Iterable<? extends Aircraft> findByEngineNumberGreatherThan(int numberOfEngines) {
 		return StreamSupport
-				.stream(aircraftRepository.findAllByNumberOfEnginesGreatherThanEqual(numberOfEngines).spliterator(),
+				.stream(aircraftRepository.findAllBynumberOfEnginesGreaterThanEqual(numberOfEngines).spliterator(),
 						false)
 				.map(Aircraft::new).collect(Collectors.toList());
 	}

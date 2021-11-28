@@ -18,6 +18,7 @@ public class AircraftDTO {
 	@NotEmpty
 	private String model;
 	@Min(1)
+	@Max(6)
 	private int numberOfEngines;
 	@DateTimeFormat
 	private LocalDate firstFlight;
