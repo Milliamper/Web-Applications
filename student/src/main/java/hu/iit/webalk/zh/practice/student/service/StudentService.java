@@ -6,6 +6,8 @@ public interface StudentService {
 	
 	Iterable<Student> getAllStudent();
 	
+	Iterable<? extends Student> findByActiveStatus(Boolean isActiveStatus);
+	
 	Student create(Student Student);
 	
 	void save(Student student);

@@ -16,6 +16,10 @@ public class Student {
 	private boolean isActiveStatus;
 	private int balance;
 	private LocalDate beginningOfLegalRelationship;
+	
+	public Student() {
+		
+	}
 
 	public Student(Long id, String neptunID, boolean isActiveStatus, int balance,
 			LocalDate beginningOfLegalRelationship) {

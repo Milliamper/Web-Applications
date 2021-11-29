@@ -11,12 +11,14 @@ import hu.iit.webalk.zh.practice.student.repository.Student;
 
 public class StudentDTO {
 	
+	// itt ne használjunk kisbetűs típusokat mert akkor nem lehet előírni hogy megkapta-e vagy sem
+	
 	private Long id;
 	@NotEmpty
 	private String NeptunID;
-	private boolean isActiveStatus;
+	private Boolean isActiveStatus;
 	@Min(1)
-	private int balance;
+	private Integer balance;
 	@DateTimeFormat
 	private LocalDate beginningOfLegalRelationship;
 
@@ -28,7 +30,7 @@ public class StudentDTO {
 		this.beginningOfLegalRelationship = student.getBeginningOfLegalRelationship();
 	}
 
-	public Student toEntity() {
+	public Student toStudent() {
 		return new Student(id, NeptunID, isActiveStatus, balance, beginningOfLegalRelationship);
 	}
 

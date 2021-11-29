@@ -13,9 +13,9 @@ public class StudentCreateDTO {
 
 	@NotEmpty
 	private String NeptunID;
-	private boolean isActiveStatus;
+	private Boolean isActiveStatus;
 	@Min(1)
-	private int balance;
+	private Integer balance;
 	@DateTimeFormat
 	private LocalDate beginningOfLegalRelationship;
 
@@ -25,8 +25,12 @@ public class StudentCreateDTO {
 		this.balance = student.getBalance();
 		this.beginningOfLegalRelationship = student.getBeginningOfLegalRelationship();
 	}
+	
+	public StudentCreateDTO() {
+		
+	}
 
-	public Student toEntity() {
+	public Student toStudent() {
 		return new Student(null, NeptunID, isActiveStatus, balance, beginningOfLegalRelationship);
 	}
 

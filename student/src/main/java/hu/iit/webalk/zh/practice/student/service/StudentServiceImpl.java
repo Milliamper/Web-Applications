@@ -3,6 +3,8 @@ package hu.iit.webalk.zh.practice.student.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -62,6 +64,11 @@ public class StudentServiceImpl implements StudentService {
 			throw new NoSuchEntityException(id);
 		}
 		return new Student(optionalStudent.get());
+	}
+
+	@Override
+	public Iterable<? extends Student> findByActiveStatus(Boolean isActiveStatus) {
+		return StreamSupport.stream(studentRepository.findByisActiveStatus(isActiveStatus).spliterator(), false).map(Student::new).collect(Collectors.toList());
 	}
 
 
