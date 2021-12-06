@@ -2,36 +2,41 @@ package hu.iit.webalk.zh.practice.student.controller;
 
 import java.time.LocalDate;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import hu.iit.webalk.zh.practice.student.repository.Student;
+import hu.iit.webalk.zh.practice.student.service.Student;
 
 public class StudentDTO {
-	
-	// itt ne használjunk kisbetűs típusokat mert akkor nem lehet előírni hogy megkapta-e vagy sem
-	
+
 	private Long id;
-	@NotEmpty
 	private String NeptunID;
-	private Boolean isActiveStatus;
-	@Min(1)
-	private Integer balance;
+	private boolean isActiveStatus;
+	@NotNull
+	private int balance;
 	@DateTimeFormat
 	private LocalDate beginningOfLegalRelationship;
+	@Range(min = 1, max = 2)
+	private int type; // 1: hallgato, 2: oktato
 
 	public StudentDTO(Student student) {
+		super();
 		this.id = student.getId();
 		this.NeptunID = student.getNeptunID();
 		this.isActiveStatus = student.isActiveStatus();
 		this.balance = student.getBalance();
 		this.beginningOfLegalRelationship = student.getBeginningOfLegalRelationship();
+		this.type = student.getType();
 	}
-
+	
 	public Student toStudent() {
-		return new Student(id, NeptunID, isActiveStatus, balance, beginningOfLegalRelationship);
+		return new Student(id, NeptunID, isActiveStatus, balance, beginningOfLegalRelationship, type);
+	}
+	
+	public StudentDTO() {
+		
 	}
 
 	public Long getId() {
@@ -72,6 +77,14 @@ public class StudentDTO {
 
 	public void setBeginningOfLegalRelationship(LocalDate beginningOfLegalRelationship) {
 		this.beginningOfLegalRelationship = beginningOfLegalRelationship;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 }

@@ -1,4 +1,4 @@
-package hu.iit.webalk.zh.practice.student.exception;
+package hu.iit.webalk.zh.practice.house.exceptions;
 
 public class NoSuchEntityException extends RuntimeException {
 	

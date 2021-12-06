@@ -1,40 +1,54 @@
-package hu.iit.webalk.zh.practice.student.controller;
+package hu.iit.webalk.zh.practice.student.service;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
-import javax.validation.constraints.NotNull;
+//StudentServiceDTO
+public class Student {
 
-import org.hibernate.validator.constraints.Range;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import hu.iit.webalk.zh.practice.student.service.Student;
-
-public class StudentCreateDTO {
-
+	private Long id;
 	private String NeptunID;
 	private boolean isActiveStatus;
-	@NotNull
 	private int balance;
-	@DateTimeFormat
 	private LocalDate beginningOfLegalRelationship;
-	@Range(min = 1, max = 2)
 	private int type; // 1: hallgato, 2: oktato
 
-	public StudentCreateDTO(Student student) {
+	public Student(hu.iit.webalk.zh.practice.student.repository.Student student) {
 		super();
+		this.id = student.getId();
 		this.NeptunID = student.getNeptunID();
 		this.isActiveStatus = student.isActiveStatus();
 		this.balance = student.getBalance();
 		this.beginningOfLegalRelationship = student.getBeginningOfLegalRelationship();
 		this.type = student.getType();
 	}
-	
-	public Student toStudent() {
-		return new Student(null, NeptunID, isActiveStatus, balance, beginningOfLegalRelationship, type);
+
+	public hu.iit.webalk.zh.practice.student.repository.Student toEntity() {
+		return new hu.iit.webalk.zh.practice.student.repository.Student(id, NeptunID, isActiveStatus, balance,
+				beginningOfLegalRelationship, type);
 	}
-	
-	public StudentCreateDTO() {
-		
+
+	public Student() {
+
+	}
+
+	public Student(Long id, String neptunID, boolean isActiveStatus, int balance,
+			LocalDate beginningOfLegalRelationship, int type) {
+		super();
+		this.id = id;
+		NeptunID = neptunID;
+		this.isActiveStatus = isActiveStatus;
+		this.balance = balance;
+		this.beginningOfLegalRelationship = beginningOfLegalRelationship;
+		this.type = type;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNeptunID() {

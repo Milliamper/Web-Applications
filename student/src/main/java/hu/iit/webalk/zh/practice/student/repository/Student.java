@@ -16,28 +16,21 @@ public class Student {
 	private boolean isActiveStatus;
 	private int balance;
 	private LocalDate beginningOfLegalRelationship;
-	
+	private int type; // 1: hallgato, 2: oktato
 
 	public Student(Long id, String neptunID, boolean isActiveStatus, int balance,
-			LocalDate beginningOfLegalRelationship) {
+			LocalDate beginningOfLegalRelationship, int type) {
 		super();
 		this.id = id;
-		this.NeptunID = neptunID;
+		NeptunID = neptunID;
 		this.isActiveStatus = isActiveStatus;
 		this.balance = balance;
 		this.beginningOfLegalRelationship = beginningOfLegalRelationship;
+		this.type = type;
 	}
 
-	public Student(Student student) {
-		this.id = student.getId();
-		this.NeptunID = student.getNeptunID();
-		this.isActiveStatus = student.isActiveStatus;
-		this.balance = student.getBalance();
-		this.beginningOfLegalRelationship = student.getBeginningOfLegalRelationship();
-	}
+	public Student() {
 
-	public Student toEntity() {
-		return new Student(id, NeptunID, isActiveStatus, balance, beginningOfLegalRelationship);
 	}
 
 	public Long getId() {
@@ -78,6 +71,14 @@ public class Student {
 
 	public void setBeginningOfLegalRelationship(LocalDate beginningOfLegalRelationship) {
 		this.beginningOfLegalRelationship = beginningOfLegalRelationship;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 }
